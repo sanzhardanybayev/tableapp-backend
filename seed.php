@@ -19,7 +19,10 @@ $sql .= "insert into tableapp.users (name, surname, patronymic, email, password,
         insert into tableapp.users (name, surname, patronymic, email, password, username, id_number) values ('Olympe', 'Elgee', 'Leonie', 'oelgee6@hao123.com', 'NMobHVkg', 'oelgee6', 84155269228);
         insert into tableapp.users (name, surname, patronymic, email, password, username, id_number) values ('Jacqui', 'Rutigliano', 'Krissy', 'jrutigliano7@tamu.edu', '2h0RWQ8wVH', 'jrutigliano7', 80319323659);
         insert into tableapp.users (name, surname, patronymic, email, password, username, id_number) values ('Fedora', 'Chominski', 'Vere', 'fchominski8@sohu.com', 'eFx3KRRbvjJ', 'fchominski8', 65013054240);
-        insert into tableapp.users (name, surname, patronymic, email, password, username, id_number) values ('Consolata', 'Tonkes', 'Kayne', 'ctonkes9@liveinternet.ru', 'dkTBakTTa', 'ctonkes9', 72175056424);";
+        insert into tableapp.users (name, surname, patronymic, email, password, username, id_number) values ('Consolata', 'Tonkes', 'Kayne', 'ctonkes9@liveinternet.ru', 'dkTBakTTa', 'ctonkes9', 72175056424);
+        INSERT INTO tasks VALUES
+(1, '2017-11-20 05:10:43', 5, 6, 'Исправить баг', 'При сохранении пользователя, страница не перезагружается');";
+
 
 if($conn->multi_query($sql)){
     echo "Successfully inserted!";
