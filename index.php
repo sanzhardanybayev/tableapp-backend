@@ -11,7 +11,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     switch($_POST['type']){
         case "saveUser":
 
-            if($preparedStatement = $conn->prepare("INSERT INTO tableapp.users (name, surname, patronymic, email, password, username, id_number) VALUES (?, ?, ?,?, ?, ?, ?)")) {
+            if($preparedStatement = $conn->prepare("INSERT INTO users (name, surname, patronymic, email, password, username, id_number) VALUES (?, ?, ?,?, ?, ?, ?)")) {
 
                 $preparedStatement->bind_param("sssssss", $name, $surname, $patronymic, $email, $password, $username, $id_number);
 
@@ -55,7 +55,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 }elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
     switch ($_GET['type']) {
         case 'users':
-            $query = "SELECT id,name,surname,patronymic,email,username,id_number FROM tableapp.users";
+            $query = "SELECT id,name,surname,patronymic,email,username,id_number FROM users";
             if ($result = $conn->query($query)) {
 
                 if ($result->num_rows > 0) {
@@ -94,11 +94,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $conn->set_charset("utf8");
 
-            $query = "SELECT tableapp.tasks.id,tableapp.tasks.name,tableapp.tasks.description,tableapp.tasks.date,
+            $query = "SELECT tasks.id,tasks.name,tasks.description,tasks.date,
                       users.name as username, users2.name as username2
-                      FROM tableapp.tasks as tasks 
-                      INNER JOIN tableapp.users as users ON tasks.`from` = users.id 
-                      INNER JOIN tableapp.users as users2 ON tasks.`to` = users2.id";
+                      FROM tasks as tasks 
+                      INNER JOIN users as users ON tasks.`from` = users.id 
+                      INNER JOIN users as users2 ON tasks.`to` = users2.id";
             if ($result = $conn->query($query)) {
 
                 if ($result->num_rows > 0) {
